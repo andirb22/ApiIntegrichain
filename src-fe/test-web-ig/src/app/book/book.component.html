@@ -1,0 +1,24 @@
+<h2> Book Details</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hidden">Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Read</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td class="hidden">{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.author }}</td>
+            <td>{{book.read}}</td>
+            <td>
+                <a [routerLink]="['/update', book.id]" class="btn btn-info">Update</a> &nbsp;
+                <button class="btn btn-danger" (click)="deleteBook(book)"> Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

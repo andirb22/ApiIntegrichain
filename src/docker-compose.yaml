@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: mysql
+    restart: always
+    ports:
+      -23306:4000
+    environment:
+      MYSQL_ROOT_PASSWORD : "12345678"
+      MYSQL_DATABASE: "flaskmysql"
+    volumes:
+      -./schemas/var/lib/mysql:rw
+    networks:
+      mysql-network:
+        aliases:
+          - mysql_host
+volumes:
+  schemas: {}
+networks:
+  mysql_network:
+    name: mysql_net
+    driver: bridge
