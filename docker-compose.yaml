@@ -1,9 +1,7 @@
 version: '3.7'
 services:
   bookservice:
-    build: 
-      context: .
-      dockerfile: DockerFile
+    build: ./src
     image: book_service_api
     container_name: pythonBookServiceAPI
     command: python app.py
