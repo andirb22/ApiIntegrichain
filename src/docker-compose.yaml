@@ -1,25 +1,32 @@
 version: '3.7'
 services:
-  mysql:
-    build:
+  bookservice:
+    build: 
       context: .
       dockerfile: DockerFile
-    container_name: mysql
-    restart: always
+    image: book_service_api
+    container_name: pythonBookServiceAPI
+    command: python app.py
+    restart: on-failure
+    depends_on:
+      - mysql
+    links:
+      - mysql
     ports:
-      -23306:4000
-    environment:
-      MYSQL_ROOT_PASSWORD : "12345678"
-      MYSQL_DATABASE: "flaskmysql"
-    volumes:
-      -./schemas/var/lib/mysql:rw
+      - 4001:4000
     networks:
-      mysql-network:
-        aliases:
-          - mysql_host
+        - default
+  mysql:
+    image: mysql:5.7
+    container_name: MySQLServiceDB
+    ports:
+        - "3307:3306"
+    environment:
+        MYSQL_USER: dev
+        MYSQL_PASSWORD: 12345678
+        MYSQL_ROOT_PASSWORD: 12345678
+        MYSQL_DATABASE: "flaskmysql"
+    networks:
+      - default
 volumes:
   schemas: {}
-networks:
-  mysql_network:
-    name: mysql_net
-    driver: bridge
