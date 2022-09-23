@@ -1,5 +1,9 @@
 version: '3.7'
 services:
+  app:
+    build: ./src-fe/test-web-ig
+    ports:
+      - 4200:4200
   bookservice:
     build: ./src
     image: book_service_api

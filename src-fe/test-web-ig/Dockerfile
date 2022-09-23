@@ -5,7 +5,4 @@ COPY . /app
 #RUN npm install
 RUN yarn
 #RUN npm run build --prod
-RUN yarn run build --prod
-#stage 2
-FROM nginx:alpine
-COPY --from=node /app/dist/angular-crud-rest-api /usr/share/nginx/html
+CMD ng serve --host 0.0.0.0

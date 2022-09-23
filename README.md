@@ -11,3 +11,13 @@ docker images
 0.0.0.0:4000
 127.0.0.1:4000
 localhost:4000
+
+# Ejemplo JSON
+{
+	"title":"claqa",
+	"author":"Barrca233434as",
+	"read":0
+}
+
+# url de api
+http://localhost:4001/books
