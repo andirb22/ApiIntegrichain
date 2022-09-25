@@ -3,7 +3,8 @@ services:
   app:
     build: ./book-app-crud
     ports:
-      - 4200:4200
+      - 4200:80
+    
   bookservice:
     build: ./src
     image: book_service_api
