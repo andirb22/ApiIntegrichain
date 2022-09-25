@@ -11,8 +11,8 @@ class Books(configDb.db.Model):
     read= configDb.db.Column (configDb.db.Boolean, unique=False, default=False)
     
     
-    def __init__(self,uuid, title, author, read):
-        self.uuid=uuid
+    def __init__(self,title, author, read):
+        
         self.title=title
         self.author=author
         self.read=read

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   app:
-    build: ./src-fe/test-web-ig
+    build: ./book-app-crud
     ports:
       - 4200:4200
   bookservice:

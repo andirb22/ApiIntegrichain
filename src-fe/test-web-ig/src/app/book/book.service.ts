@@ -13,7 +13,7 @@ export class BookService {
 
   constructor(private http:HttpClient) {}
 
-  private bookUrl = 'http://localhost:4000/books';
+  private bookUrl = 'http://localhost:4001/books';
 
   public getBooks() {
     console.log(this.bookUrl)
@@ -31,12 +31,7 @@ export class BookService {
   public createBook(book) {
     console.log(book);
     return this.http.post<Book>(this.bookUrl , book);
-    /*
-    ngOnInit() {          
-      this.http.post<Article>('https://reqres.in/api/posts', { title: 'Angular POST Request Example' }).subscribe(data => {
-          this.postId = data.id;
-      })
-      */
+
   
   }
 

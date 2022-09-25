@@ -1,0 +1,84 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentBook.id">
+    <h4>Book</h4>
+    <div>
+      <label><strong>Title:</strong></label> {{ currentBook.title }}
+    </div>
+    <div>
+      <label><strong>Description:</strong></label>
+      {{ currentBook.author }}
+    </div>
+    <div>
+      <label><strong>Read:</strong></label>
+      {{ currentBook.read ? "Read" : "Pending" }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/book/{{ currentBook.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentBook">
+    <br />
+    <p>Please click on a Book...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentBook.id" class="edit-form">
+    <h4>Book</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentBook.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="author">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="author"
+          [(ngModel)]="currentBook.author"
+          name="author"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>Read:</strong></label>
+        <!--{{ currentBook.read ? "Read" : "Pending" }}-->
+       
+       <mat-checkbox class="checkbox-margin" [(ngModel)]="currentBook.read" name="read" ></mat-checkbox>
+        
+      </div>
+    </form>
+
+
+
+    <button class="badge badge-danger mr-2" (click)="deleteBook()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateBook()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentBook.id">
+    <br />
+    <p>Cannot access this Book...</p>
+  </div>
+</ng-template>
