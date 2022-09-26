@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-//import Book from 'src/app/models/book.model';
+import {  Router } from '@angular/router';
 import {Book} from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
+import {MatDialog} from '@angular/material/dialog';
+
+
 
 @Component({
   selector: 'app-add-tutorial',
   templateUrl: './add-book.component.html',
   styleUrls: ['./add-book.component.css']
 })
+
 export class AddBookComponent {
 
   book: Book = {
@@ -17,7 +21,8 @@ export class AddBookComponent {
   };
   submitted = false;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,private router: Router) { }
+
 
   saveBook(): void {
     const data = {
@@ -31,6 +36,7 @@ export class AddBookComponent {
         next: (res) => {
           console.log(res);
           this.submitted = true;
+          this.router.navigate(['/books']);
         },
         error: (e) => console.error(e)
       });

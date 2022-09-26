@@ -21,3 +21,6 @@ localhost:4000
 
 # url de api
 http://localhost:4001/books
+
+# url de Pagina Angular
+http://localhost:4200

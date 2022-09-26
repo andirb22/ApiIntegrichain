@@ -63,6 +63,7 @@ export class BookDetailsComponent implements OnInit {
           console.log(res);
           this.currentBook.read = status;
           this.message = res.message ? res.message : 'The status was updated successfully!';
+          this.router.navigate(['/books']);
         },
         error: (e) => console.error(e)
       });
@@ -76,6 +77,7 @@ export class BookDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.message = res.message ? res.message : 'This book was updated successfully!';
+          this.router.navigate(['/books']);
         },
         error: (e) => console.error(e)
       });

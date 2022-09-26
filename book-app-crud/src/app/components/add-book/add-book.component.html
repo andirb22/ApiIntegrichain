@@ -14,17 +14,18 @@
       </div>
 
       <div class="form-group">
-        <label for="author">Description</label>
+        <label for="author">Author</label>
         <input
           class="form-control"
           id="author"
           required
           [(ngModel)]="book.author"
-          name="description"
+          name="author"
         />
       </div>
 
       <button (click)="saveBook()" class="btn btn-success">Submit</button>
+      
     </div>
 
     <div *ngIf="submitted">
